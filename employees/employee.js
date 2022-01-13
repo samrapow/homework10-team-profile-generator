@@ -10,7 +10,7 @@ class Employee {
     }
 
     getEmployeeID() {
-        return(this.id);
+        return(this.employeeID);
     }
 
     getEmailAddress() {
