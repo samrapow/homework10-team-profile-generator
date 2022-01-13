@@ -1,5 +1,4 @@
-const { MODULEDECLARATION_TYPES } = require("@babel/types");
-const Employee = require("../employees/employee.js")
+const Employee = require("../employees/employee.js");
 
 class Manager extends Employee {
     constructor(name, employeeID, emailAddress, officeNumber) {
