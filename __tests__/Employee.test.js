@@ -32,17 +32,17 @@ test("Can get name via getName()", () => {
 test("Can get id via getId()", () => {
   const testValue = 100;
   const e = new Employee("Foo", testValue);
-  expect(e.getEmployeeID()).toBe(testValue);
+  expect(e.getId()).toBe(testValue);
 });
 
 test("Can get email via getEmail()", () => {
   const testValue = "test@test.com";
   const e = new Employee("Foo", 1, testValue);
-  expect(e.getEmailAddress()).toBe(testValue);
+  expect(e.getEmail()).toBe(testValue);
 });
 
 test("getRole() should return \"Employee\"", () => {
   const testValue = "Employee";
   const e = new Employee("Alice", 1, "test@test.com");
-  expect(e.getJob()).toBe(testValue);
+  expect(e.getRole()).toBe(testValue);
 });
