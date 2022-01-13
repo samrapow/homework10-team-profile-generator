@@ -18,7 +18,7 @@ class Employee {
     }
 
     getJob() {
-        return "Employee";
+        return 'Employee';
     }
 
 };
