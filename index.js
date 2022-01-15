@@ -12,7 +12,7 @@ const createHTML = require('./src/createHTML');
 const cardArray = [];
 
 // get information from user
-const addManager = () => {
+const newManager = () => {
     return inquirer.prompt ([
         {
             type: 'input',
@@ -40,74 +40,67 @@ const addManager = () => {
         const manager = new Manager (name, id, email, officeNumber);
 
         cardArray.push(manager); 
-        console.log(manager); 
     })
 };
 
-const addEmployee = () => {
+const newEmployee = () => {
 
     return inquirer.prompt ([
         {
             type: 'list',
             name: 'role',
-            message: "Please choose your employee's role",
+            message: "Which type of employee would you like to add?",
             choices: ['Engineer', 'Intern']
         },
         {
             type: 'input',
             name: 'name',
-            message: "What's the name of the employee?", 
+            message: "What is the employee's name?", 
         },
         {
             type: 'input',
             name: 'id',
-            message: "Please enter the employee's ID.",
+            message: "What is the employee's ID?",
         },
         {
             type: 'input',
             name: 'email',
-            message: "Please enter the employee's email.",
+            message: "What is the employee's email?",
         },
         {
             type: 'input',
             name: 'github',
-            message: "Please enter the employee's github username.",
+            message: "What is the employee's github username?",
             when: (input) => input.role === "Engineer",
         },
         {
             type: 'input',
             name: 'school',
-            message: "Please enter the intern's school",
+            message: "What school did the intern go to?",
             when: (input) => input.role === "Intern",
         },
         {
             type: 'confirm',
-            name: 'confirmAddEmployee',
-            message: 'Would you like to add more team members?',
-            default: false
+            name: 'addMoreEmployees',
+            message: 'Do you want to add more employees?',
         }
     ])
-    .then(employeeData => {
-        // data for employee types 
+    .then(employeeInfo => {
 
-        let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
-        let employee; 
+        let { name, id, email, role, github, school, addMoreEmployees } = employeeInfo; 
+        let teamMember; 
 
         if (role === "Engineer") {
-            employee = new Engineer (name, id, email, github);
-
-            console.log(employee);
+            teamMember = new Engineer (name, id, email, github);
 
         } else if (role === "Intern") {
-            employee = new Intern (name, id, email, school);
-
-            console.log(employee);
+            teamMember = new Intern (name, id, email, school);
         }
 
-        cardArray.push(employee); 
+        cardArray.push(teamMember); 
 
-        if (confirmAddEmployee) {
-            return addEmployee(cardArray); 
+        if (addMoreEmployees) {
+            return newEmployee(cardArray); 
         } else {
             return cardArray;
         }
@@ -116,27 +109,25 @@ const addEmployee = () => {
 };
 
 
-// function to generate HTML page file using file system 
+// generate HTML file
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
-        // if there is an error 
         if (err) {
             console.log(err);
             return;
-        // when the profile has been created 
         } else {
             console.log("Your team profile has been successfully created! Please check out the index.html")
         }
     })
 }; 
 
-addManager()
-  .then(addEmployee)
+newManager()
+  .then(newEmployee)
   .then(cardArray => {
     return createHTML(cardArray);
   })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
+  .then(HTMLversion => {
+    return writeFile(HTMLversion);
   })
   .catch(err => {
  console.log(err);
