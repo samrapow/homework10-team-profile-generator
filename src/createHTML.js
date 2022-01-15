@@ -3,11 +3,11 @@ const generateManagerCard = function (manager) {
     return `
     <div class="col-4 mt-5">
         <div class="card h-100">
-            <div class="card-header text-center">
+            <div class="card-header text-center bg-info">
                 <h2>${manager.name}</h2>
                 <h3>Manager</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-secondary text-white">
                 <p class="id">ID: ${manager.id}</p>
                 <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
                 <p class="office">Office Number: ${manager.officeNumber}</p>
@@ -24,11 +24,11 @@ const generateEngineerCard = function (engineer) {
     return `
     <div class="col-4 mt-5">
         <div class="card h-100">
-            <div class="card-header text-center">
+            <div class="card-header text-center bg-info">
                 <h2>${engineer.name}</h2>
                 <h3>Engineer</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-secondary text-white">
                 <p class="id">ID: ${engineer.id}</p>
                 <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
                 <p class="github">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
@@ -43,11 +43,11 @@ const generateInternCard = function (intern) {
     return `
     <div class="col-4 mt-5">
         <div class="card h-100">
-            <div class="card-header text-center">
+            <div class="card-header text-center bg-info">
                 <h2>${intern.name}</h2>
                 <h3>Intern</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-secondary text-white">
                 <p class="id">ID: ${intern.id}</p>
                 <p class="email">Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
                 <p class="school">School: ${intern.school}</p>
@@ -112,7 +112,7 @@ const generateTeamProfile = function (employeeCards) {
   <body>
       <header>
           <nav class="navbar" id="navbar">
-              <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+              <span class="navbar-brand mb-0 h1 w-100 text-center bg-secondary text-white" id="navbar-text">Team Profile</span>
           </nav>
       </header>
       <main>
